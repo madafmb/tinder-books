@@ -4,14 +4,14 @@
     <title>Tinder Livros</title>
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <!--  comment-->
 
   </head>
 
   <body>
     <div class="container-fluid">
-      <div class="row">
+      <div id="bookContainer" class="row">
         <div  class="col-4 mx-auto book">
             <h1> </h1>
             <br>
@@ -19,15 +19,17 @@
             <br>
             <p> </p>
             <div style="text-align:center;">
-              <button data-opinion= 'like' class= "bg-success justify" type="button"> Gosto!</button>
-              <button data-opinion= 'dislike'class= "bg-danger" type="button"> Não gosto!</button>
+              <button data-opinion= 'like' class= "bg-success justify" type="button"> Like!</button>
+              <button data-opinion= 'dislike'class= "bg-danger" type="button"> Dislike!</button>
               <br>
               <br>
-              <a href=""target= "_blank"></a>
-              
-              <a href=""target= "_blank"></a>
+              <a href="" target= "_blank"></a>
+
+               <!-- <a href=""></a>  -->
             </div>
         </div>
+        
+
         <!-- <div class="col-4 mx-auto book">
             <h1 class= "text-center font-italic"> O Assassino Inglês</h1>
             <br>
@@ -51,7 +53,8 @@
             <a href="https://www.bertrand.pt/livro/verao-quente-domingos-amaral/13044551"target= "_blank" >Bertrand</a>
         </div> -->
       </div>
-    </div> 
+      <div id="endpage"></div>
+    </div>
     <!--<br>
     Gosto - <label id="lbllikes"></label>
     Nao gosto -  <label id="lbldislikes"></label>-->
@@ -59,4 +62,4 @@
    <script src="script.js"></script>
   </body>
 
-</html>   
+</html>
