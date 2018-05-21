@@ -1,0 +1,71 @@
+h1 {
+    font-size: 50px;
+    text-align: center;
+    font-weight:bold; 
+    color:maroon;
+    font-family:cursive;
+    padding-top: 25px;
+    width: 100%;
+}
+img{
+    height: 400px;
+    width: 300px;
+    display: block;
+    margin: auto;
+}
+p{
+    font-size:17px;
+    text-align:justify;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+
+ /* a:visited {
+    color:blue;
+}  */
+
+ a{
+    font-size:15px;
+    text-align:justify;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    Color:brown;
+    font-weight: bold; 
+    text-decoration: underline;
+    padding-bottom: 30px;
+    padding: 5px;
+    
+} 
+
+button{
+    height:30px;
+    width:110px;
+    font-size:15px;
+    font-weight: bold; 
+    color: white;   
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    
+}
+/*.titulo1{
+    color:rebeccapurple;
+}*/
+body{
+   background-color: bisque;
+}
+
+/* .book{
+    text-align:center;
+    display: none;
+}
+
+.book.active{
+    display:block;
+} */
+
+/* remover css relativo a visualizacao dos livros */
+
+/* book::after{
+    content:"abc":
+} */
+
+
