@@ -53,6 +53,17 @@ body{
    background-color: bisque;
 }
 
+
+#endPage{
+    display:none;
+}
+
+#bookContainer{
+    display:none;
+}
+#startPage,{
+    display:block;
+}
 /* .book{
     text-align:center;
     display: none;

@@ -11,16 +11,21 @@
 
   <body>
     <div class="container-fluid">
+      <div id="startPage" class=row>
+        <input type=text id= 'searchBox'> </textarea>
+        <button id='search' > Search</button>
+
+      </div>
       <div id="bookContainer" class="row">
-        <div  class="col-4 mx-auto book">
+        <div  class="col-4 mx-auto book ">
             <h1> </h1>
             <br>
             <img src="" alt="">
             <br>
             <p> </p>
             <div style="text-align:center;">
-              <button data-opinion= 'like' class= "bg-success justify" type="button"> Like</button>
-              <button data-opinion= 'dislike'class= "bg-danger" type="button"> Dislike</button>
+              <button data-opinion= 'Like' class= "bg-success justify" type="button"> Like</button>
+              <button data-opinion= 'Dislike'class= "bg-danger" type="button"> Dislike</button>
               <br>
               <br>
               <a href="" target= "_blank"></a>
@@ -53,10 +58,18 @@
             <a href="https://www.bertrand.pt/livro/verao-quente-domingos-amaral/13044551"target= "_blank" >Bertrand</a>
         </div> -->
       </div>
-      <div id="endpage">
-        <!-- <button type="button"> inicio</button>
-        <button type="button"> pesquisa</button> -->
-
+      <div id="endPage" class=row>
+        <table id="display">
+             <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Opinion</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button id='resetButton' > Reset</button>
+        <button  > New Search</button>
       </div>
     </div>
     <!--<br>

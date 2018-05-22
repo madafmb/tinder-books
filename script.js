@@ -102,9 +102,10 @@ class library{
     constructor(){
         this.books = [];
         this.seenBooks = [];
-        this.opinion='';
+        
         // this.Load(this.books[0])
         this.GetBooks("harry potter");
+        
 
     }
 
@@ -121,18 +122,31 @@ class library{
         // });
     }
 
-    NextBook(){
-
+    NextBook(opinion){
+        // console.log(this.books.length)
+        this.books[0].opinion = opinion;// para guardar a informacao de cada livro que é clicado
         this.seenBooks.push(this.books[0]);//para o livro desaparecer
         this.books.splice(0,1);//para aparecer o seguinte
-        this.Load(this.books[0]);
-        // opinion=this.opinion.slice(0);
-        // console.log(opinion);
-       
-        this.opinion+= opinion + ' '
+        if (this.books.length> 0){
+            this.Load(this.books[0]);
+            // console.log(opinion)
+        }
+        else{
 
-        console.log(this.opinion);
-    }
+            $('#bookContainer').toggle();
+            $('#endPage').toggle();
+            var html = "";
+            this.seenBooks.forEach(function(v,i){
+                html += `
+                    <tr>
+                        <td>` + v.title + `</td>
+                        <td>` + v.opinion + `</td>
+                    </tr>`;
+            });
+            $('#display tbody').html(html);
+        
+        }
+    } 
 
     GetBooks(search){
         var obj = this;
@@ -148,6 +162,7 @@ class library{
                     description: v.volumeInfo.description,
                     img: v.volumeInfo.imageLinks.thumbnail,
                     links: v.volumeInfo.previewLink,
+                    opinion: "",
                 }
                 obj.books.push(book);
             });
@@ -155,28 +170,38 @@ class library{
             obj.Load(obj.books[0]);
         });
     }
+
+    Reset(){
+        this.books = this.seenBooks;
+        this.seenBooks = [];
+        this.Load(this.books[0]);
+        $('#bookContainer').toggle();
+        $('#endPage').toggle();
+    }
+
+    Start(){
+        $('#searchBox').val();
+        this.GetBooks( );
+        $('#bookContainer').toggle();
+        $('#startPage').toggle();
+    }
+
+
 };
 
 var lib=new library();
 
 
 $('.book button').click(function(){
-    opinion=$(this).attr("data-opinion");
-     lib.NextBook(opinion);
-
-    if (this.Load(this.book) == 0 ){
-        $('#bookContainer').removeClass('active')
-        $('#endpage').addClass('active')
-    }
-
+    var opinion=$(this).attr("data-opinion");
+    lib.NextBook(opinion);
 });
 
+$('#resetButton').click(function(){
+    lib.Reset();
+});
 
+$('#search').click(function(){
+    lib.Start(this.GetBooks);
+});
 
-//         $next=$('.book').first();
-//         $next= $('.book:first-of-type');
-//         $next=$('book').eq(0);
-//     }
-
-//     $current.removeClass ("active");
-//     $next.addClass("active");
