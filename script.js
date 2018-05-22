@@ -48,6 +48,7 @@
 // $next=$current.next() - chama o proximo elemento
 //$('.book').first(); - select the first .book element
 //first-of-type: Select every .book element that is the first .book element of its parent:
+
 // var book1 = {
 //     name: 'A Estalagem de Rose Harbour',
 //     img: "estalagem.jpeg",
@@ -101,7 +102,7 @@ class library{
     constructor(){
         this.books = [];
         this.seenBooks = [];
-        this.opinion;
+        this.opinion='';
         // this.Load(this.books[0])
         this.GetBooks("harry potter");
 
@@ -125,12 +126,12 @@ class library{
         this.seenBooks.push(this.books[0]);//para o livro desaparecer
         this.books.splice(0,1);//para aparecer o seguinte
         this.Load(this.books[0]);
-        this.opinion= opinion.substr(0);
-        // console.log(this.opinion);
+        // opinion=this.opinion.slice(0);
+        // console.log(opinion);
+       
+        this.opinion+= opinion + ' '
 
-        // this.opinion.forEach(function(v,i){
-        //     v+=opinion;
-        // })
+        console.log(this.opinion);
     }
 
     GetBooks(search){
@@ -146,7 +147,6 @@ class library{
                     title: v.volumeInfo.title,
                     description: v.volumeInfo.description,
                     img: v.volumeInfo.imageLinks.thumbnail,
-                    opinion: "",
                     links: v.volumeInfo.previewLink,
                 }
                 obj.books.push(book);
@@ -161,6 +161,22 @@ var lib=new library();
 
 
 $('.book button').click(function(){
-     var opinion=$(this).attr("data-opinion");
+    opinion=$(this).attr("data-opinion");
      lib.NextBook(opinion);
+
+    if (this.Load(this.book) == 0 ){
+        $('#bookContainer').removeClass('active')
+        $('#endpage').addClass('active')
+    }
+
 });
+
+
+
+//         $next=$('.book').first();
+//         $next= $('.book:first-of-type');
+//         $next=$('book').eq(0);
+//     }
+
+//     $current.removeClass ("active");
+//     $next.addClass("active");
