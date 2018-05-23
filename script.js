@@ -98,17 +98,18 @@
 //     ]
 // };
 
-class library{
-    constructor(){
+class library {
+    constructor() {
         this.books = [];
-        this.seenBooks = [];   
+        this.seenBooks = [];
+        this.searchIndex = 0
         // this.Load(this.books[0])
         // this.GetBooks("harry potter");
     }
 
-    Load(book){
+    Load(book) {
         $('.book h1').text(book.title);
-        $('.book img').attr('src',book.img);
+        $('.book img').attr('src', book.img);
         $('.book p').text(book.description);
         $('.book a').text('Preview');
         $('.book a').attr('href', book.links);
@@ -119,21 +120,21 @@ class library{
         // });
     }
 
-    NextBook(opinion){
+    NextBook(opinion) {
         // console.log(this.books.length)
         this.books[0].opinion = opinion;// para guardar a informacao de cada livro que é clicado
         this.seenBooks.push(this.books[0]);//para o livro desaparecer
-        this.books.splice(0,1);//para aparecer o seguinte
-        if (this.books.length> 0){
+        this.books.splice(0, 1);//para aparecer o seguinte
+        if (this.books.length > 0) {
             this.Load(this.books[0]);
             // console.log(opinion)
         }
-        else{
+        else {
 
             $('#bookContainer').toggle();
             $('#endPage').toggle();
             var html = "";
-            this.seenBooks.forEach(function(v,i){
+            this.seenBooks.forEach(function (v, i) {
                 html += `
                     <tr>
                         <td>` + v.title + `</td>
@@ -141,34 +142,65 @@ class library{
                     </tr>`;
             });
             $('#display tbody').html(html);
-        
+
         }
-    } 
-
-    GetBooks(search){
-        var obj = this;
-        $.ajax({
-            url: "https://www.googleapis.com/books/v1/volumes?q=" + search,
-
-        }).done(function(data){
-            //quando o pedido ajax terminar com sucesso
-            //console.log(data);
-            data.items.forEach(function(v,i){
-                var book = {
-                    title: v.volumeInfo.title,
-                    description: v.volumeInfo.description,
-                    img: v.volumeInfo.imageLinks.thumbnail,
-                    links: v.volumeInfo.previewLink,
-                    opinion: "",
-                }
-                obj.books.push(book);
-            });
-
-            obj.Load(obj.books[0]);
-        });
     }
 
-    Reset(){
+    GetBooks(search) {
+        var obj = this;
+       
+            $.ajax({
+                url: "https://www.googleapis.com/books/v1/volumes?q=" + search + "&startIndex=" + this.searchIndex,
+            
+
+            }).done(function (data) {
+                //quando o pedido ajax terminar com sucesso
+                //console.log(data);
+                data.items.forEach(function (v, i) {
+                    var book = {
+                        title: v.volumeInfo.title,
+                        description: v.volumeInfo.description,
+                        img: v.volumeInfo.imageLinks.thumbnail,
+                        links: v.volumeInfo.previewLink,
+                        opinion: "",
+                    }
+                    
+                    obj.books.push(book);
+                });
+    
+                obj.Load(obj.books[0]);
+                
+            });
+            this.searchIndex += 10;
+            // if (this.seenBooks.length=0)
+            //...
+        // else if (this.seenBooks.length >= 10) {
+        //     $.ajax({
+        //         url: "https://www.googleapis.com/books/v1/volumes?q=" + search + "&startIndex=10",
+        //     }).done(function (data) {
+        //         data.items.forEach(function (v, i) {
+        //             var book = {
+        //                 title: v.volumeInfo.title,
+        //                 description: v.volumeInfo.description,
+        //                 img: v.volumeInfo.imageLinks.thumbnail,
+        //                 links: v.volumeInfo.previewLink,
+        //                 opinion: "",
+        //             }
+        //             i
+        //             obj.books.push(book);
+        //         });
+        //         obj.Load(obj.books[0]);
+        //         $('#bookContainer').toggle(); //passamos para aqui em vez do metodo star porque so faz sentido mostrar os livros depois de estarem carregados
+        //         $('#endPage').toggle();
+
+
+            // })
+        // }
+
+
+    }
+
+    Reset() {
         this.books = this.seenBooks;
         // console.log(this.seenBooks);
         // console.log(this.books);
@@ -179,42 +211,52 @@ class library{
         $('#endPage').toggle();
     }
 
-    Start(){
-        this.GetBooks($('#searchBox').val() );
-        $('#bookContainer').toggle();
+    Start() {
+        var pesquisa = $('#searchBox').val();
+
+        if (pesquisa.length >= 2) {
+            this.GetBooks(pesquisa);
+        }
+        $('#bookContainer').toggle(); 
         $('#startPage').toggle();
     }
 
-    NewSearch(){
-        $('#startPage').toggle();
+    NewSearch() {
         $('#endPage').toggle();
+        $('#startPage').toggle();
         $('#searchBox').val('');
-        // $("tbody").empty();
-        // $("tbody").html('');
-        // $('tbody').removeData();
-        this.seenBooks = [];
-        
-        
+        // this.seenBooks = []; nao e preciso pq é para aparecerem as pesquisas todas
+
     }
 
 };
 
-var lib=new library();
+var lib = new library();
 
 
-$('.book button').click(function(){
-    var opinion=$(this).attr("data-opinion");
+$('.book button').click(function () {
+    var opinion = $(this).attr("data-opinion");
     lib.NextBook(opinion);
 });
 
-$('#resetButton').click(function(){
+$('#resetButton').click(function () {
     lib.Reset();
 });
 
-$('#searchButton').click(function(){
-    lib.Start(this.GetBooks);
+$('#searchButton').click(function () {
+    lib.Start();
 });
 
-$('#newSearchButton').click(function(){
+$('#newSearchButton').click(function () {
     lib.NewSearch();
+});
+
+$('#readMore').click(function () {
+    lib.GetBooks($('#searchBox').val());
+    $('#endPage').toggle();
+    $('#bookContainer').toggle();
+});
+
+$('#searchBox').keyup(function(){
+    setTimeout(lib.GetBooks(), 2000);
 });

@@ -3,7 +3,7 @@ h1 {
     text-align: center;
     font-weight:bold; 
     color:maroon;
-    font-family:cursive;
+     font-family:cursive; 
     padding-top: 25px;
     width: 100%;
 }
@@ -20,7 +20,7 @@ p{
     
 }
 
- a{
+a{
     font-size:15px;
     text-align:justify;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
