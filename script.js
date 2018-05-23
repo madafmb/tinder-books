@@ -101,12 +101,9 @@
 class library{
     constructor(){
         this.books = [];
-        this.seenBooks = [];
-        
+        this.seenBooks = [];   
         // this.Load(this.books[0])
-        this.GetBooks("harry potter");
-        
-
+        // this.GetBooks("harry potter");
     }
 
     Load(book){
@@ -173,19 +170,31 @@ class library{
 
     Reset(){
         this.books = this.seenBooks;
+        // console.log(this.seenBooks);
+        // console.log(this.books);
         this.seenBooks = [];
+        // console.log(this.seenBooks);
         this.Load(this.books[0]);
         $('#bookContainer').toggle();
         $('#endPage').toggle();
     }
 
     Start(){
-        $('#searchBox').val();
-        this.GetBooks( );
+        this.GetBooks($('#searchBox').val() );
         $('#bookContainer').toggle();
         $('#startPage').toggle();
     }
 
+    NewSearch(){
+        $('#startPage').toggle();
+        $('#endPage').toggle();
+        $('#searchBox').val('');
+        // $("tbody").empty();
+        // $("tbody").html('');
+        $('tbody').removeData();
+        
+        
+    }
 
 };
 
@@ -201,7 +210,10 @@ $('#resetButton').click(function(){
     lib.Reset();
 });
 
-$('#search').click(function(){
+$('#searchButton').click(function(){
     lib.Start(this.GetBooks);
 });
 
+$('#newSearchButton').click(function(){
+    lib.NewSearch();
+});
