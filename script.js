@@ -191,7 +191,8 @@ class library{
         $('#searchBox').val('');
         // $("tbody").empty();
         // $("tbody").html('');
-        $('tbody').removeData();
+        // $('tbody').removeData();
+        this.seenBooks = [];
         
         
     }
