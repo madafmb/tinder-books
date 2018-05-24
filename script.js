@@ -279,14 +279,31 @@ $('#readMore').click(function () {
 //     setTimeout(lib.GetBooks, 2000);
 // });
 
+
+// var timer;
+// $('#searchBox').keyup(function(){
+//     clearTimeout(timer);
+//     if($('#searchBox').val().length>2)
+//     timer=setTimeout(function(){
+//         lib.GetBooks($('#searchBox').val());
+//         $('#startPage').toggle();
+//         $('#bookContainer').toggle();}
+//         ,2000
+//     );
+// });
+
+
+var timer;
 $('#searchBox').keyup(function(){
-    setTimeout(function(){
-        lib.GetBooks($('#searchBox').val());
-        $('#startPage').toggle();
-        $('#bookContainer').toggle();}
-        ,2000
-    );
+    clearTimeout(timer);
+    if($('#searchBox').val().length>2){
+    timer=setTimeout(function(){
+        lib.Start();
+        
+        }    ,2000);
+    }
 });
+
 
 
 
