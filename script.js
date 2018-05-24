@@ -226,9 +226,11 @@ class library {
         $('#startPage').toggle();
         $('#searchBox').val('');
         // this.seenBooks = []; nao e preciso pq é para aparecerem as pesquisas todas
+        this.searchIndex = 0
+    }
+    StartAuto(){
 
     }
-
 };
 
 var lib = new library();
@@ -257,6 +259,37 @@ $('#readMore').click(function () {
     $('#bookContainer').toggle();
 });
 
+// $('#searchBox').keyup(function(){
+//     setTimeout(function(){
+//         lib.GetBooks($('#searchBox').val())}
+//         ,2000
+//     );
+// });
+
+// $('#searchBox').keyup(function(){
+//     setTimeout(function(){
+//         $('#searchButton').click(function () {
+//             lib.Start();
+//         })}
+//         ,2000
+//     );
+// });
+
+// $('#searchBox').keyup(function(){
+//     setTimeout(lib.GetBooks, 2000);
+// });
+
 $('#searchBox').keyup(function(){
-    setTimeout(lib.GetBooks(), 2000);
+    setTimeout(function(){
+        lib.GetBooks($('#searchBox').val());
+        $('#startPage').toggle();
+        $('#bookContainer').toggle();}
+        ,2000
+    );
 });
+
+
+
+
+
+
