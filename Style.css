@@ -3,10 +3,26 @@ h1 {
     text-align: center;
     font-weight:bold; 
     color:maroon;
-     font-family:cursive; 
+    font-family:cursive; 
     padding-top: 25px;
-    width: 100%;
+    
 }
+
+.h1Start{
+    text-align:left;
+    font-size: 70px;
+    font-weight:bold; 
+    color:maroon;
+    padding-top: 50px;
+    font-family:cursive; 
+
+}
+/* #searchBox{
+    
+} */
+
+
+
 img{
     height: 400px;
     width: 300px;
@@ -27,7 +43,7 @@ a{
     Color:brown;
     font-weight: bold; 
     text-decoration: underline;
-    padding-bottom: 30px;
+   
     padding: 5px;
     
 } 
@@ -46,15 +62,19 @@ button{
 }*/
 body{
    background-color: bisque;
+
+   
 }
 
 
 #endPage{
     display:none;
+    padding-bottom: 30px;
 }
 
 #bookContainer{
     display:none;
+    padding-bottom: 30px;
 }
 #startPage{
     display:block;
@@ -77,3 +97,21 @@ body{
 } */
 
 
+  thead th {
+    background: darkred; 
+    color:whitesmoke;
+    font-size: 18px;
+    font-weight:bold;
+    text-transform: uppercase;
+  }
+
+
+
+  th, td {
+    padding: 5px;
+    font-size: 18px;
+  } 
+
+  #buttondiv{
+      text-align:center;
+  }

@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tinder Livros</title>
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <!--  comment-->
 
-  </head>
+<head>
+  <title>Tinder Books</title>
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <!--  comment-->
 
-  <body>
-    <div class="container-fluid">
-      <div id="startPage" class='row col-4 mx-auto'>
-        <h1> Library </h1>
-        
-        <input type=text id= 'searchBox'> </input>
-        <button id='searchButton' > Search</button>
+</head>
 
-      </div>
-      <div id="bookContainer" class="row">
-        <div  class="col-4 mx-auto book ">
-            <h1> </h1>
-            <br>
-            <img src="" alt="">
-            <br>
-            <p> </p>
-            <div style="text-align:center;">
-              <button data-opinion= 'Like' class= "bg-success text-white" type="button"> Like</button>
-              <button data-opinion= 'Dislike'class= "bg-danger text-white" type="button"> Dislike</button>
-              <br>
-              <br>
-              <a href="" target= "_blank"></a>
+<body>
+  <div class="container-fluid">
+    <div id="startPage">
+      <h1 class="h1Start"> Welcome to Tinder Books </h1>
+      <br>
+      <br>
+      <input type=text id='searchBox'> </input>
+      <button id='searchButton'> Search</button>
 
-               <!-- <a href=""></a>  -->
-            </div>
+    </div>
+    <div id="bookContainer" class="row">
+      <div class="col-4 mx-auto book ">
+        <h1> </h1>
+        <br>
+        <img src="" alt="">
+        <br>
+        <p> </p>
+        <div id= "buttondiv" >
+          <button data-opinion='Like' class="bg-success text-white" type="button"> Like</button>
+          <button data-opinion='Dislike' class="bg-danger text-white" type="button"> Dislike</button>
+          <br>
+          <br>
+          <a href="" target="_blank"></a>
+
+          <!-- <a href=""></a>  -->
         </div>
-        
+      </div>
 
-        <!-- <div class="col-4 mx-auto book">
+
+      <!-- <div class="col-4 mx-auto book">
             <h1 class= "text-center font-italic"> O Assassino Inglês</h1>
             <br>
             <img src="assassinoingles.jpeg"  class="rounded img-fluid rounded d-block" alt="Responsive image">
@@ -59,30 +61,32 @@
             <a href="https://www.wook.pt/livro/verao-quente-domingos-amaral/13044551" target= "_blank" >Wook</a>
             <a href="https://www.bertrand.pt/livro/verao-quente-domingos-amaral/13044551"target= "_blank" >Bertrand</a>
         </div> -->
-      </div>
-      <div id="endPage" class='row col-4 mx-auto'>
-        <br>
-        <br>
-        <br>
-        <table id="display" class="table-striped table-bordered">
-             <thead class='thead-dark'>
-                <tr>
-                    <th>Title</th>
-                    <th>Opinion</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
+    </div>
+    <div id="endPage" class='row col-10 mx-auto'>
+      <br>
+      <br>
+      <div style="text-align:center;">
+        <table id="display" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Opinion</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
         </table>
-        <button id='resetButton'  > Reset</button>
-        <button id='newSearchButton'   > New Search</button>
+        <br>
+        <button id='resetButton'> Reset</button>
+        <button id='newSearchButton'> New Search</button>
         <button id='readMore'> Read More</button>
       </div>
     </div>
-    <!--<br>
+  </div>
+  <!--<br>
     Gosto - <label id="lbllikes"></label>
     Nao gosto -  <label id="lbldislikes"></label>-->
-   <script src="jquery-3.3.1.js"></script>
-   <script src="script.js"></script>
-  </body>
+  <script src="jquery-3.3.1.js"></script>
+  <script src="script.js"></script>
+</body>
 
 </html>
